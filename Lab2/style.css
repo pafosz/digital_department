@@ -1,0 +1,68 @@
+/* style.css */
+body {
+    background: linear-gradient(to bottom, #ffffff, #0843b997, #eb3c2f98);
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+    padding: 2%;
+}
+
+.main_head{
+    font-size: 40px;
+}
+
+.content {
+    display: flex;
+    margin: 1cap;   
+}
+
+.content-left {
+    background: #ffffff32; /* Цвет фона для левой части */
+    margin-right: 20px; /* Отступ между карточками */
+    padding: 20px; /* Внутренний отступ */
+    border-radius: 10px; /* Закругленные углы */
+    width: 60%; /* Ширина левой части */
+}
+
+.content-right {
+    background: #ffffff32; /* Цвет фона для правой части */
+    padding: 0; /* Внутренний отступ */
+    border-radius: 5%; /* Закругленные углы */
+    width: 38%; /* Ширина правой части */
+}
+
+h1 {
+    color: #233546;
+}
+
+h2 {
+    color: #233546db;
+}
+
+p {
+    font-size: 18px;
+}
+
+a {
+    color: inherit; /* Ссылка не выделяется */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.3s, transform 0.3s; /* Анимация при наведении */
+}
+
+li {
+    font-size: 18px;
+}
+
+ol > li::marker {
+    font-weight: bold;
+}
+
+a:hover {
+    color: #000099; /* Цвет ссылки при наведении */
+}
+
+img {
+    border-radius: 5%; /* Закругление углов изображения */
+    width: 100%; /* Задаем ширину изображения */
+    height: 100%;
+}
