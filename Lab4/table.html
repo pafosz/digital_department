@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица студентов</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Список студентов</h1>
+
+<!-- Форма для добавления новой строки -->
+<form id="studentForm">
+    <label for="id">ID:</label>
+    <input type="number" id="id" name="id" required min="0"><br><br>
+
+    <label for="name">ФИО студента:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="recordBook">Номер зачетной книжки:</label>
+    <input type="text" id="recordBook" name="recordBook" required><br><br>
+
+    <label for="group">Номер группы:</label>
+    <input type="text" id="group" name="group" required><br><br>
+
+    <label for="gender">Пол:</label>
+    <select id="gender" name="gender" required>
+        <option value="male">Мужской</option>
+        <option value="female">Женский</option>
+        <option value="gey">Не определился(Омерика)</option>
+    </select><br><br>
+
+    <label for="age">Возраст:</label>
+    <input type="number" id="age" name="age" required min="18"><br><br>
+
+    <label for="admissionForm">Форма поступления:</label>
+    <input type="text" id="admissionForm" name="admissionForm" required><br><br>
+
+    <label for="direction">Название направления:</label>
+    <input type="text" id="direction" name="direction" required><br><br>
+
+    <button type="submit">Добавить</button>
+</form>
+
+<!-- Таблица для отображения студентов -->
+<table id="studentTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО студента</th>
+            <th>Номер зачетной книжки</th>
+            <th>Номер группы</th>
+            <th>Пол</th>
+            <th>Возраст</th>
+            <th>Форма поступления</th>
+            <th>Название направления</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Здесь будут добавляться строки -->
+    </tbody>
+</table>
+
+<script>
+    document.getElementById('studentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем отправку формы
+
+        // Получаем значения из формы
+        const id = document.getElementById('id').value;
+        const name = document.getElementById('name').value;
+        const recordBook = document.getElementById('recordBook').value;
+        const group = document.getElementById('group').value;
+        const gender = document.getElementById('gender').value;
+        const age = document.getElementById('age').value;
+        const admissionForm = document.getElementById('admissionForm').value;
+        const direction = document.getElementById('direction').value;
+
+        // Создаем новую строку таблицы
+        const table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+        
+        // Проверка на уникальность ID
+        const existingRows = table.getElementsByTagName('tr');
+        for (let i = 0; i < existingRows.length; i++) {
+            const existingId = existingRows[i].cells[0].textContent; // Получаем ID из первой ячейки
+            if (existingId === id) {
+                alert('ID должен быть уникальным!');
+                return; // Прерываем выполнение функции, если ID уже существует
+            }
+        }
+        const newRow = table.insertRow();
+        newRow.insertCell(0).textContent = id;
+        newRow.insertCell(1).textContent = name;
+        newRow.insertCell(2).textContent = recordBook;
+        newRow.insertCell(3).textContent = group;
+        newRow.insertCell(4).textContent = gender === 'male' ? 'Мужской' : 
+            gender === 'female' ? 'Женский' : 
+            'Не определился(Омерика)';
+                                           
+
+        newRow.insertCell(5).textContent = age;
+        newRow.insertCell(6).textContent = admissionForm;
+        newRow.insertCell(7).textContent = direction;
+
+        // Очищаем форму
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
